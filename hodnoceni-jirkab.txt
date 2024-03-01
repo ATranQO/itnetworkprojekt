@@ -1,0 +1,14 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - příliš obecné identifikátory jako Evidence a Databaze nedávají najevo, co v nich vlastně je a co to má dělat.
+2. Dodržení principů SRP a SoC - vyděsil mě odkaz na Scanner nebo Evidenci v datové třídě Pojistenec, ale nepoužívá se, měl by odtamtud zmizet. Třída Databaze má validační metody pro věk a telefonní číslo, ale sama je nepoužívá a spoléhá na to, že je zavolá někdo zvenku, čímž se vytváří nesmyslně těsná vazba.
+3. Vhodný výběr datových typů - věk je chybně jako řetězec, což neumožňuje s ním pracovat, např. vyhledat klienty dle rozmezí věku. Telefonní číslo je sice řetězec, ale vyfiltrovány všechny znaky mimo číslice, zkrácené na devět znaků, takže naprosto nelze zadat mezinárodní tlf čísla, navíc je naopak číslo doplněné nulami do devíti znaků, čímž vznikne zcela jiné číslo.
+4. Formátování kódu - ok
+5. Duplicitní kód a nekonečné cykly - výpis všech a vyhledávání používají stejnou metodu pro získání dat, ale každá jiný způsob, jak data vypsat
+6. Validace vstupních dat - viz výše
+7. Logičnost a složitost - po vložení údajů jsou jména převedena na malá písmena, aby při vypisování byla pokaždé znovu a znovu složitě kapitalizována (první velké, ostatní malá), což má vliv na výkonnost programu. Nebylo by lepší kapitalizovat v rámci validace záznamu při jeho vytváření a usnadnit si výpis, takže by se ta akce pro jeden záznam dělala jen jednou?
+V třídách definujeme atributy (členské proměnné) jako něco, co chceme dlouhodobě uchovávat, zejména v třídách Databaze a Evidence jsou takto definovány i proměnné, které měly zůstat jen lokální v příslušných metodách a se stavem instance nemají nic společného.
+8. Komentáře - nějaké jsou
+9. Celkové hodnocení - bylo by vhodné trochu "uklidit" - nepoužívaná data, proměnné, importy, zjednodušení celkového chování a využití funkcí, jejich parametrů a návratových hodnot. Ujasnit si, co má která třída dělat, co je její odpovědnost, a nenechat ji spoléhat na to, že to za ni udělá/zavolá někdo jiný.
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!
